@@ -1,0 +1,107 @@
+<style>
+.svg-content {
+	display: block;
+
+}
+.svg-container {
+
+}
+
+        rect {
+		  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /*Standard*/
+
+	}
+      .p {
+		fill: none;
+        stroke:black;
+        stroke-width:10px;
+        stroke-opacity:1;
+        stroke-linejoin:round;
+        stroke-linecap:round;
+      }
+	#f1 {
+
+      }
+      #t1 {
+
+	}
+
+    .card {
+        display: block;
+	    vertical-align: middle;
+	    margin: 0 auto;
+    }
+
+    .card .card-background rect {
+        fill: white;
+    }
+
+    .card .card-info .card-title {
+		font-size: 40px;
+		fill: #201605;
+        stroke: #000;
+		font-family: sans;
+            text-rendering: optimizeLegibility;
+    }
+
+    .card .card-info .card-image-frame {
+        fill: none;
+        stroke: #000;
+        stroke-width:8px;
+        stroke-opacity:1;
+        stroke-linejoin:round;
+        stroke-linecap:round;
+    }
+
+    .card .card-description text {
+        font-size: 40px;
+		fill: black;
+        stroke: black;
+		font-family: sans;
+        font-style: italic;
+    }
+
+</style>
+
+
+
+<!--http://paletton.com/#uid=10R0u0kcp8orl3ZoS8GgonQk2ol-->
+<div class="card-type">
+    <svg version="1.1" viewBox="0 0 756 1056" preserveAspectRatio="xMaxYMax meet" class="card">
+	
+        <g class="card-background">
+            <rect x="10" y="10"  rx="30" ry="30" stroke="ff0000" width="736" height="1036" style="fill: #201605;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"/></rect>
+			<rect x="20" y="20"  rx="25" ry="25" stroke="ff0000" width="716" height="1016" style="fill: #BE9A5D;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke:#000;stroke-width:0.5;"/></rect>
+        </g>
+        <g class="card-info" transform="translate(8 0)">
+            <text class="card-title" x="30" y="80">{{card.name}}</text>
+            <image class="card-image" x="30" y="100" width="676" height="484" xlink:href="{{card.image_link|default:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT0bH4hXVspoc7ODQOZ75ldijjSfXVHmOrDj9r3WDzyGKEmU7nm'}}"></image>
+			<rect x="30" y="100" rx="5" ry="5" stroke="ff0000" width="676" height="484" style="fill: transparent;stroke-opacity:1;stroke:#000;stroke-width:5;"></rect>
+		</g>
+
+        <g class="card-description" transform="translate(38 650)">
+            {{card.description|safe}}
+        </g>
+        {% block symbols %}{% endblock %}
+        {% block other %}{% endblock %}
+    </svg>
+</div>
+    <!---->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

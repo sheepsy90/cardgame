@@ -1,0 +1,34 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block result_list %}
+  {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
+
+    <style>
+        a:hover .card-container {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .card-container {
+            opacity: 0.8;
+        }
+        .container {
+            width: 15%;
+            float: left;
+        }
+    </style>
+    {% for element in cl.result_list %}
+        <div class="container">
+            <a href="{{request.url}}{{element.id}}">
+                {% block card_template %}{% endblock %}
+            </a>
+        </div>
+    {% endfor %}
+
+   <div class="clear"></div>
+
+  {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
+{% endblock %}
+
+

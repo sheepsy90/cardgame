@@ -1,0 +1,269 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cardograph</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="http://demos.jquerymobile.com/1.4.5/css/themes/default/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+    <style>
+
+        #choosable_character .card{
+            float: left;
+            width: 15%;
+            margin: 0.83%;
+        }
+
+
+        #small-device-navbutton {
+            display: none;
+
+        }
+
+        #large-device-navbutton {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        #large-device-navbutton button {
+            margin: 4px;
+        }
+
+        #logo-small {
+            display: none;
+        }
+
+    .yourContainer {
+        position: absolute;
+        z-index: 100;
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/Albert_Bierstadt_-_A_Storm_in_the_Rocky_Mountains,_Mt._Rosalie_-_Google_Art_Project.jpg');
+        background-repeat: no-repeat;
+        background-color: black;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+        margin 0 auto;
+    }
+
+        #mobile-char-choose-pagination {
+            display: none;
+            text-align: center;
+        }
+
+    @media (max-width: 810px) {
+
+
+        #small-device-navbutton {
+            display: block;
+        }
+
+        #large-device-navbutton {
+            display: none;
+        }
+
+
+        .current_hidden {
+            display: none;
+        }
+
+        .current_hidden {
+            display: none;
+        }
+
+        #choosable_character .card{
+            float: none;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        #mobile-char-choose-pagination {
+            display: block;
+        }
+    }
+
+     @media (max-width: 430px) {
+
+        #small-device-navbutton {
+            display: block;
+        }
+
+        #large-device-navbutton {
+            display: none;
+        }
+
+
+        .current_hidden {
+            display: none;
+        }
+
+        .current_hidden {
+            display: none;
+        }
+
+        #choosable_character .card{
+            float: none;
+            width: 60%;
+            margin: 0 auto;
+            margin-top: -50%;
+        }
+
+        .yourContainer {
+            display: none;
+            background-image: none;
+        }
+
+        #mobile-char-choose-pagination {
+            display: block;
+        }
+     }
+
+
+
+
+
+
+    @media screen and (orientation : landscape) {
+        .yourContainer {
+            background-size: 100% auto;
+        }
+    }
+
+    @media screen and (orientation : portrait) {
+            .yourContainer {
+                background-size: auto 100%;
+            }
+        }
+
+
+
+
+
+
+    </style>
+</head>
+
+
+<body style="background-color: black" class="ui-mobile-viewport ui-overlay-a" id="ui-page-top" >
+    <div class="yourContainer"></div>
+
+	<div class="ui-panel-wrapper">
+        <div style="padding: 0;" class="ui-content jqm-content" role="main">
+
+
+            <div id="first">
+                <div style="width: 100%; background-color: black; text-align: left">
+                    <div id="small-device-navbutton">
+		                <a class="ui-btn ui-shadow ui-btn-inline ui-btn ui-icon-bars ui-btn-icon-notext" style="background-color: black; border: 0px solid; width: 40px;" href="#sidebar"></a>
+                    </div>
+                    <div id="large-device-navbutton">
+                        <button type="button" class="btn btn-default">More info</button>
+                        <button type="button" class="btn btn-default">Subreddit</button>
+                    </div>
+                </div>
+
+                <div style="width: 100%; text-align: center;">
+                    <h2>Choose a character</h2>
+                </div>
+
+
+
+                <div id="mobile-char-choose-pagination" style="">
+                    <ul class="pagination pagination-lg">
+                        {% for character in choosable_character %}
+                            <li id="nav_{{character.name}}" class="{% if forloop.counter == 1 %}active{% endif %}"><a href="#" onclick="show('{{character.name}}')">{{character.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div id="choosable_character">
+                    {% for character in choosable_character %}
+                        <a id="card_{{character.name}}" class="{% if forloop.counter == 1 %}current_visible{% else %}current_hidden{% endif %}">
+                           {% include "cards/character/character_card.html" with card=character %}
+                        </a>
+                    {% endfor %}
+                </div>
+                <div style="text-align: center; width: 100%;">
+                    <button type="button" class="btn btn-lg btn-success">Choose Character</button>
+                    </div>
+            </div>
+        </div>
+    </div><!-- /header -->
+
+
+    <!-- The side bar for mobile devices -->
+    <div data-quicklinks="true" class="jqm-demos jqm-panel-page ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active" data-role="page" tabindex="0">
+        <div id="sidebar" data-theme="a" data-display="overlay" data-position="left" data-role="panel" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-panel-closed ui-body-a ui-panel-animate">
+            <div class="ui-panel-inner">
+                <h3>Left Panel: Overlay</h3>
+                <p>This panel is positioned on the left with the overlay display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
+                <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+                <a class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline" data-rel="close" href="#demo-links">Close panel</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        function show(e){
+            $('#mobile-char-choose-pagination > ul > li').removeClass('active');
+            $('#nav_' + e).addClass('active');
+            $('#choosable_character > a').removeClass('current_visible').addClass('current_hidden');
+            $('#card_' + e).addClass('current_visible').removeClass('current_hidden');
+        }
+
+        function get_csrftoken(){
+           return $("#csrf_token_container > input").val();
+        }
+
+        $(document).ready(function(){
+
+          $( "#choosable_character" ).on( "swipeleft", function(e){
+                console.log("left");
+                var h = $('#choosable_character > .current_visible');
+                console.log(e);
+                var e = $('#choosable_character > .current_visible').prev();
+
+                if ($(e).length > 0) {
+                    $(h).removeClass('current_visible').addClass('current_hidden');
+                    $(e).removeClass('current_hidden').addClass('current_visible');
+                }
+
+          });
+
+          $( "#choosable_character" ).on( "swiperight", function(e){
+                console.log("right");
+                var h = $('#choosable_character > .current_visible');
+                console.log(e);
+                var e = $('#choosable_character > .current_visible').next();
+
+                if ($(e).length > 0) {
+                    $(h).removeClass('current_visible').addClass('current_hidden');
+                    $(e).removeClass('current_hidden').addClass('current_visible');
+                }
+          });
+
+
+         });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{% extends 'cards/general_card.html' %}
+
+{% block symbols %}
+    {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/action.html" x=630 y=25 %}
+    {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/hunting.html" x=520 y=25 %}
+{% endblock %}

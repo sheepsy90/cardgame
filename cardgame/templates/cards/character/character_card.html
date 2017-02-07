@@ -1,0 +1,43 @@
+{% extends 'cards/general_card.html' %}
+
+{% block symbols %}
+    {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/character.html" x=630 y=25 %}
+{% endblock %}
+
+{% block other %}
+<g transform="translate(50 765)">
+
+    <g transform="translate(120 0)">
+        <g transform="translate(0 0)">
+            <circle cx="135" cy="50" r="45" style="stroke:#000; stroke-width: 10px; fill:#000"></circle>
+            {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/diplomatic.html" x=0 y=0 %}
+            <text transform="translate(110 75)" style="font-size: 70px; fill: #fff; stroke-width: 3; stroke: #000; font-weight: bold;">{{ card.diplomacy }}</text>
+        </g>
+
+         <g transform="translate(240 0)">
+            <circle cx="135" cy="50" r="45" style="stroke:#000; stroke-width: 10px; fill:#000"></circle>
+            {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/militant.html" x=0 y=0 %}
+            <text transform="translate(110 75)" style="font-size: 70px; fill: #fff; stroke-width: 3; stroke: #000; font-weight: bold;">{{ card.militant }}</text>
+        </g>
+    </g>
+
+
+     <g transform="translate(0 140)">
+        <circle cx="135" cy="50" r="45" style="stroke:#000; stroke-width: 10px; fill:#000"></circle>
+        {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/intelligence.html" x=0 y=0 %}
+        <text transform="translate(110 75)" style="font-size: 70px; fill: #fff; stroke-width: 3; stroke: #000; font-weight: bold;">{{ card.intelligence }}</text>
+    </g>
+
+     <g transform="translate(240 140)">
+        <circle cx="135" cy="50" r="45" style="stroke:#000; stroke-width: 10px; fill:#000"></circle>
+        {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/strength.html" x=0 y=0 %}
+        <text transform="translate(110 75)" style="font-size: 70px; fill: #fff; stroke-width: 3; stroke: #000; font-weight: bold;">{{ card.strength }}</text>
+    </g>
+
+     <g transform="translate(475 140)">
+        <circle cx="135" cy="50" r="45" style="stroke:#000; stroke-width: 10px; fill:#000"></circle>
+        {% include "cards/symbols/general_symbol.html" with symbol_name="cards/symbols/swiftness.html" x=0 y=0 %}
+        <text transform="translate(110 75)" style="font-size: 70px; fill: #fff; stroke-width: 3; stroke: #000; font-weight: bold;">{{ card.swiftness }}</text>
+    </g>
+</g>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "admin/general_change_list.html" %}
+
+{% block card_template %}
+    {% include "cards/action/hunting/hunting_card.html" with card=element %}
+{% endblock %}

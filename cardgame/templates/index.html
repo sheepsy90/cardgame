@@ -1,0 +1,315 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cardograph</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="http://demos.jquerymobile.com/1.4.5/css/themes/default/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+
+        .container1 {
+            padding: 10px;
+            border: 3px solid silver;
+            border-radius: 10px;
+            background-color: black;
+            color: #ddd;
+        }
+
+        #reg_button {
+            margin-bottom: 10px;
+        }
+
+    #first {
+        background-color: transparent;
+        height: 33%; width 100%;
+      }
+
+       .a {
+            background-color: transparent; position: absolute; left: 66%; top: 33%; width: 34%;
+        }
+
+        .b {
+            background-color: transparent; position: relative; left: -10%; top: -100px; width: 300px; height: 250px;
+        }
+
+    input, button {
+        margin-top: 2px;
+    }
+
+        #small-device-navbutton {
+            display: none;
+
+        }
+
+        #large-device-navbutton {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        #large-device-navbutton button {
+            margin: 4px;
+
+        }
+
+
+        .some-cards {
+            left: 20%;
+            top: 60%;
+            width: 10%;
+        }
+
+        .cardography {
+            position: relative;
+            left: 10%;
+            width: 40%;
+            top: 15%;
+        }
+
+        #logo-small {
+            display: none;
+        }
+
+    @media (max-width: 810px) {
+
+
+        #small-device-navbutton {
+            display: block;
+        }
+
+        #large-device-navbutton {
+            display: none;
+        }
+
+        .some-cards {
+            display: none;
+        }
+
+        .cardography {
+            position: static;
+            margin: 0 auto;
+            width: 400px;
+            margin-top: 10px;
+        }
+
+        #logo-big {
+            display: none;
+        }
+
+        #logo-small {
+            display: block;
+            text-align: center;
+        }
+
+        .not-in-small {
+            display: none;
+        }
+
+
+      #first {
+        background-color: transparent;
+        margin: 0 auto;
+        height: auto;
+
+      }
+
+        .a {
+        margin-top: 40px;
+            position: static;
+            width: 100%;
+            height: auto;
+
+        }
+        .b {
+            position: static;
+            width: 400px;
+            height: auto;
+                margin: 0 auto;
+
+        }
+    }
+
+     @media (max-width: 430px) {
+        #first {
+            background-color: transparent;
+            margin: 0 auto;
+        }
+
+        .some-cards {
+            display: none;
+        }
+
+
+        .a {
+            margin-top: 40px;
+            position: static;
+            width: auto;
+            margin: 15px;
+        }
+
+        .b {
+            position: static;
+            height: auto;
+            width: auto;
+        }
+
+        .cardography {
+            position: static;
+            margin: 15px;
+            width: auto;
+            margin-top: 10px;
+        }
+
+         .not-in-small {
+            display: none;
+        }
+
+     }
+
+
+
+
+.yourContainer {
+    position: absolute;
+    z-index: 100;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/Albert_Bierstadt_-_A_Storm_in_the_Rocky_Mountains,_Mt._Rosalie_-_Google_Art_Project.jpg');
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    margin 0 auto;
+}
+
+    @media screen and (orientation : landscape) {
+        .yourContainer {
+            background-size: 100% auto;
+        }
+    }
+
+
+
+    @media screen and (orientation : portrait) {
+            .yourContainer {
+                background-size: auto 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body style="background-color: black" class="ui-mobile-viewport ui-overlay-a" id="ui-page-top" >
+    <div class="yourContainer"></div>
+
+	<div class="ui-panel-wrapper">
+        <div style="padding: 0;" class="ui-content jqm-content" role="main">
+
+
+            <div id="first">
+                <div style="width: 100%; background-color: black; text-align: left">
+                    <div id="small-device-navbutton">
+		                <a class="ui-btn ui-shadow ui-btn-inline ui-btn ui-icon-bars ui-btn-icon-notext" style="background-color: black; border: 0px solid; width: 40px;" href="#sidebar"></a>
+                    </div>
+                    <div id="large-device-navbutton">
+                        <button type="button" class="btn btn-default">More info</button>
+                        <button type="button" class="btn btn-default">Subreddit</button>
+                    </div>
+                </div>
+
+                {% for element in some_random_cards %}
+                    <div class="some-cards" style="position: absolute; transform: translate({% widthratio forloop.counter 1 70 %}px, 0px) rotate({% widthratio forloop.counter|add:'-2' 1 10 %}deg);">{% include "cards/character/character_card.html" with card=element %}</div>
+                {% endfor %}
+
+                <div id="logo-small" style="font-size: 50px; font-weight: bold; color: #fff; text-shadow: 4px 4px #777;">Cardography</div>
+
+                <div class="a">
+                    <div class="b">
+                        <div id="csrf_token_container">{% csrf_token %}</div>
+                         <div id="kram" class="container1" style="width: 100%">
+                            <h2 class="form-signin-heading">Authenticate</h2>
+                            <input type="email" name="email" id="auth_email" class="form-control" placeholder="Email" required>
+                            <input type="password" name="password" id="auth_password" class="form-control" placeholder="Password" required>
+                            <button id="auth_button" class="btn btn-lg btn-primary btn-block">Play now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cardography">
+                    <div id="logo-big" style="font-size: 70px; font-weight: bold; color: #fff; text-shadow: 4px 4px #777;">Cardography</div>
+                    <div style="width: 100%; padding: 10px; border: 3px solid silver; color: white; border-radius: 10px; text-shadow: 0px 0px #000000; background-color: black; margin-bottom: 40px;">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                        sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </div>
+                </div>
+            </div>
+            <div class="not-in-small" style="z-index: -1; height: 33%; width 100%; background-color: transparent;"></div>
+            <div class="not-in-small" style="z-index: -1; height: 34%; width 100%; background-color: transparent;"></div>
+        </div>
+    </div><!-- /header -->
+
+
+    <!-- The side bar for mobile devices -->
+    <div data-quicklinks="true" class="jqm-demos jqm-panel-page ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active" data-role="page" tabindex="0">
+        <div id="sidebar" data-theme="a" data-display="overlay" data-position="left" data-role="panel" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-panel-closed ui-body-a ui-panel-animate">
+            <div class="ui-panel-inner">
+                <h3>Left Panel: Overlay</h3>
+                <p>This panel is positioned on the left with the overlay display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
+                <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+                <a class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline" data-rel="close" href="#demo-links">Close panel</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function get_csrftoken(){
+           return $("#csrf_token_container > input").val();
+        }
+
+        $(document).ready(function(){
+            $("#auth_button").bind("click", function(){
+                $.ajax({
+                  type: "POST",
+                  url: "/authenticate",
+                  data: {
+                    csrfmiddlewaretoken: get_csrftoken(),
+                    password: $('#auth_password').val(),
+                    email: $('#auth_email').val()
+                  }
+                }).done(function( data ) {
+                    if (data['success']) {
+                        window.location = data['next_page'];
+                    } else {
+                        alert(data['reason']);
+                    }
+                }).error(function(){
+                    alert("Some error");
+                });
+            });
+         });
+
+    </script>
+
+</body>
+
+</html>

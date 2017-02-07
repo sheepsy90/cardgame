@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+    <style>
+.svg-content {
+	display: block;
+
+}
+.svg-container {
+	display: block;
+	width: 10%;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+
+        rect {
+		  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /*Standard*/
+
+	}
+      path, polyline {
+		fill: none;
+        stroke:black;
+        stroke-width:10px;
+        stroke-opacity:1;
+        stroke-linejoin:round;
+        stroke-linecap:round;
+      }
+	#f1 {
+		fill: none;
+        stroke:black;
+        stroke-width:5px;
+        stroke-opacity:1;
+        stroke-linejoin:round;
+        stroke-linecap:round;
+      }
+      #t1 {
+		font-size: 40px;
+		font-weight: bold;
+		color: black;
+		font-family: helvetica;
+	}
+	#image{
+	opacity: 0.8;
+
+}
+		#image:hover {
+			opacity: 1;
+			pointer: cursor;
+			-webkit-transition: opacity .5s ease-in-out;
+        -moz-transition: opacity .5s ease-in-out;
+        -ms-transition: opacity .5s ease-in-out;
+        -o-transition: opacity .5s ease-in-out;
+        transition: opacity .5s ease-in-out;
+		transition: 0.6s;
+	transform-style: preserve-3d;
+	}
+	#leftcard {
+		fill: red;
+	}
+	#leftcard:hover {
+		fill: green;
+	}
+
+        #available_cards div{
+            float: left;
+        }
+
+        .svg-container {
+            opacity: 0.5;
+        }
+       .svg-container:hover {
+            opacity: 1;
+
+        }
+
+        #events {
+            float: left;
+            width: 30%;
+            background-color: yellow;
+            height: 100%;
+        }
+
+        #content_frame {
+            width: 100%;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+        #user_header_info {
+            background-color: lightblue;
+        }
+
+</style>
+    <div id="user_header_info">
+        Thank you for registration. Let's look first in your deck.
+        <span style="float: right;margin-right: 5px;"><a href="/logout">Logout</a></span>
+    </div>
+    <div style="background-color: lightblue">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Deck</a></li>
+          <li role="presentation"><a href="#">Scheduling</a></li>
+          <li role="presentation"><a href="#">Messages</a></li>
+          <li role="presentation"><a href="#">Events <span class="badge">4</span></a></li>
+        </ul>
+    </div>
+    <div id="content_frame">
+
+        <div id="deck">
+            <div id="available_cards">
+            {% for card in living_character.action_cards.all %}
+                <div class="svg-container">
+                    <svg version="1.1" viewBox="0 0 400 600" preserveAspectRatio="xMaxYMax meet" class="svg-content">
+                    <defs>
+                      <pattern id="transformedPattern" x="1" y="1" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <circle cx="1" cy="1" r="4" style="stroke: none; fill: #f3dc5f" />
+                      </pattern>
+                    </defs>
+
+                        <rect x="10" y="10"  width="380" height="580" style="fill: url(#transformedPattern); stroke:black;stroke-width:1;" />
+                        <path d="M10,10 390,10 390,590 10,590  10,10" />
+
+                        <text id="t1" x="30" y="60">{{card.category}} -> {{card.name}}</text>
+
+                        <image id="image" x="30" y="50" width="340" height="300" xlink:href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRxkXbVIA1_UUm-7WBcH7vwv8smOfsPOyweEpQpyBm3z7R1f5NTLA" />
+                        <path id="f1" d="M30,90 370,90 370,310 30,310 30,90" />
+                    </svg>
+                </div>
+            {% endfor %}
+            </div>
+            <div style="clear: both"></div>
+            <div style="text-align: center;">
+                <nav>
+                    <ul class="pagination">
+                        <li>
+                          <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                          <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
